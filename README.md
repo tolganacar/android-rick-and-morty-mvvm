@@ -1,1 +1,1 @@
-# anroid-rick-and-morty-mvvm
+# android-rick-and-morty-mvvm
