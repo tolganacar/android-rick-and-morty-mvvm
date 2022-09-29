@@ -14,7 +14,7 @@
         android:theme="@style/Theme.RickMorty"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:label="Characters"
             android:exported="true">
             <intent-filter>
