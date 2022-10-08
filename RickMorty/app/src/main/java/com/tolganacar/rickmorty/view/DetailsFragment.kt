@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.tolganacar.rickmorty.R
+import com.tolganacar.rickmorty.viewmodel.DetailsViewModel
 
 class DetailsFragment : Fragment() {
 
+    private lateinit var viewModel: DetailsViewModel
     private var countryUuid = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,5 +33,18 @@ class DetailsFragment : Fragment() {
         arguments?.let {
             countryUuid = DetailsFragmentArgs.fromBundle(it).countryUuid
         }
+
+        viewModel = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
+        viewModel.getCharacter()
+
+        observeLiveData()
+    }
+
+    private fun observeLiveData(){
+        viewModel.characterLiveData.observe(viewLifecycleOwner, Observer { character ->
+            character?.let {
+
+            }
+        })
     }
 }

@@ -1,11 +1,12 @@
 package com.tolganacar.rickmorty.service
 
-import com.tolganacar.rickmorty.model.CharacterResponseModel
+import com.tolganacar.rickmorty.model.Character
+import com.tolganacar.rickmorty.model.RMCharacterResponseModel
 import io.reactivex.Single
 import retrofit2.http.GET
 
 interface RickMortyAPI {
 
-    @GET("/character")
-    fun getCharacters() : Single<List<CharacterResponseModel>>
+    @GET("character")
+    fun getCharacters() : Single<RMCharacterResponseModel>
 }
