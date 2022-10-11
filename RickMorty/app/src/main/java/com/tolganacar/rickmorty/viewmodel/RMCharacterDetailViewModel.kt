@@ -2,11 +2,11 @@ package com.tolganacar.rickmorty.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tolganacar.rickmorty.model.Character
+import com.tolganacar.rickmorty.model.RMCharacter
 
-class DetailsViewModel: ViewModel() {
+class RMCharacterDetailViewModel: ViewModel() {
 
-    val characterLiveData = MutableLiveData<Character>()
+    val characterLiveData = MutableLiveData<RMCharacter>()
 
     fun getCharacter(){
 

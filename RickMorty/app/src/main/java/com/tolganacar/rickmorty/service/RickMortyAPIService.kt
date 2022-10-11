@@ -1,6 +1,5 @@
 package com.tolganacar.rickmorty.service
 
-import com.tolganacar.rickmorty.model.Character
 import com.tolganacar.rickmorty.model.RMCharacterResponseModel
 import io.reactivex.Single
 import retrofit2.Retrofit
@@ -17,7 +16,7 @@ class RickMortyAPIService {
                     .build()
                     .create(RickMortyAPI::class.java)
 
-    fun getCharacterList(): Single<RMCharacterResponseModel>{
-        return api.getCharacters()
+    fun getRMCharacters(): Single<RMCharacterResponseModel>{
+        return api.getRMCharacters()
     }
 }

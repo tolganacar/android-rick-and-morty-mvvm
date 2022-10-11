@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.tolganacar.rickmorty.R
-import com.tolganacar.rickmorty.viewmodel.DetailsViewModel
+import com.tolganacar.rickmorty.viewmodel.RMCharacterDetailViewModel
 
-class DetailsFragment : Fragment() {
+class RMCharacterDetailFragment : Fragment() {
 
-    private lateinit var viewModel: DetailsViewModel
+    private lateinit var viewModel: RMCharacterDetailViewModel
     private var countryUuid = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,10 +31,10 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            countryUuid = DetailsFragmentArgs.fromBundle(it).countryUuid
+            countryUuid = RMCharacterDetailFragmentArgs.fromBundle(it).countryUuid
         }
 
-        viewModel = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(RMCharacterDetailViewModel::class.java)
         viewModel.getCharacter()
 
         observeLiveData()

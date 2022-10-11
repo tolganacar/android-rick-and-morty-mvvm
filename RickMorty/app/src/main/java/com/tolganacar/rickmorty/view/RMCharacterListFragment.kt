@@ -9,14 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tolganacar.rickmorty.R
-import com.tolganacar.rickmorty.adapter.RickMortyAdapter
-import com.tolganacar.rickmorty.viewmodel.FeedViewModel
+import com.tolganacar.rickmorty.adapter.RMCharacterAdapter
+import com.tolganacar.rickmorty.viewmodel.RMCharacterListVM
 import kotlinx.android.synthetic.main.fragment_feed.*
 
-class FeedFragment : Fragment() {
+class RMCharacterListFragment : Fragment() {
 
-    private lateinit var viewModel: FeedViewModel
-    private val rickMortyAdapter = RickMortyAdapter(arrayListOf())
+    private lateinit var viewModel: RMCharacterListVM
+    private val rickMortyAdapter = RMCharacterAdapter(arrayListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,21 +34,13 @@ class FeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(FeedViewModel::class.java)
-        viewModel.refreshData()
+        initializeViewModel()
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = rickMortyAdapter
+        initializeRecyclerview()
 
         observeLiveData()
 
-        swipeRefreshLayout.setOnRefreshListener {
-            recyclerView.visibility = View.GONE
-            feedErrorText.visibility = View.GONE
-            feedLoading.visibility = View.VISIBLE
-            viewModel.refreshData()
-            swipeRefreshLayout.isRefreshing = false
-        }
+        setSwipeRefreshLayout()
     }
 
     private fun observeLiveData(){
@@ -59,7 +51,7 @@ class FeedFragment : Fragment() {
             }
         })
 
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { error ->
+        viewModel.shouldShowErrorMessage.observe(viewLifecycleOwner, Observer { error ->
             error?.let {
                 if(it){
                     feedErrorText.visibility = View.VISIBLE
@@ -69,7 +61,7 @@ class FeedFragment : Fragment() {
             }
         })
 
-        viewModel.loadingBar.observe(viewLifecycleOwner, Observer { loading ->
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { loading ->
             loading?.let {
                 if(it){
                     feedLoading.visibility = View.VISIBLE
@@ -80,6 +72,26 @@ class FeedFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun initializeViewModel(){
+        viewModel = ViewModelProviders.of(this).get(RMCharacterListVM::class.java)
+        viewModel.getRMCharacterListFromAPI()
+    }
+
+    private fun initializeRecyclerview(){
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = rickMortyAdapter
+    }
+
+    private fun setSwipeRefreshLayout(){
+        swipeRefreshLayout.setOnRefreshListener {
+            recyclerView.visibility = View.GONE
+            feedErrorText.visibility = View.GONE
+            feedLoading.visibility = View.VISIBLE
+            viewModel.getRMCharacterListFromAPI()
+            swipeRefreshLayout.isRefreshing = false
+        }
     }
 
 }
