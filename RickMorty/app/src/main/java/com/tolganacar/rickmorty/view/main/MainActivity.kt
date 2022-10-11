@@ -1,4 +1,4 @@
-package com.tolganacar.rickmorty.view
+package com.tolganacar.rickmorty.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

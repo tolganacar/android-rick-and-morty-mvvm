@@ -6,15 +6,11 @@
         <variable
             name="rmCharacter"
             type="com.tolganacar.rickmorty.model.RMCharacter" />
-        <variable
-            name="listener"
-            type="com.tolganacar.rickmorty.adapter.RMCharacterClickListener" />
     </data>
 
 <androidx.cardview.widget.CardView
     android:id="@+id/cardView"
     android:background="@drawable/cardviewbackground"
-    android:onClick="@{listener::onRMCharacterClicked}"
     android:layout_width="match_parent"
     android:layout_height="300dp"
     app:cardUseCompatPadding="true"

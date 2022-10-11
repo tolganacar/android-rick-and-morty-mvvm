@@ -1,4 +1,4 @@
-package com.tolganacar.rickmorty.view
+package com.tolganacar.rickmorty.view.rmcharacterlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tolganacar.rickmorty.R
-import com.tolganacar.rickmorty.adapter.RMCharacterAdapter
-import com.tolganacar.rickmorty.viewmodel.RMCharacterListVM
+import com.tolganacar.rickmorty.model.RMCharacter
+import com.tolganacar.rickmorty.viewmodel.rmcharacterlist.RMCharacterListVM
 import kotlinx.android.synthetic.main.fragment_feed.*
 
-class RMCharacterListFragment : Fragment() {
+class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
 
     private lateinit var viewModel: RMCharacterListVM
     private val rickMortyAdapter = RMCharacterAdapter(arrayListOf())
@@ -81,7 +82,9 @@ class RMCharacterListFragment : Fragment() {
 
     private fun initializeRecyclerview(){
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = rickMortyAdapter
+        recyclerView.adapter = rickMortyAdapter.apply {
+            setOnClickListener(this@RMCharacterListFragment)
+        }
     }
 
     private fun setSwipeRefreshLayout(){
@@ -92,6 +95,11 @@ class RMCharacterListFragment : Fragment() {
             viewModel.getRMCharacterListFromAPI()
             swipeRefreshLayout.isRefreshing = false
         }
+    }
+
+    override fun onRMCharacterClicked(character: RMCharacter) {
+        val action = RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character.id)
+        findNavController().navigate(action)
     }
 
 }

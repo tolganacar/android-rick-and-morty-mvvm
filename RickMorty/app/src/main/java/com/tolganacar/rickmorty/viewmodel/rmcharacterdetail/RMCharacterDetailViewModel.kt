@@ -1,4 +1,4 @@
-package com.tolganacar.rickmorty.viewmodel
+package com.tolganacar.rickmorty.viewmodel.rmcharacterdetail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

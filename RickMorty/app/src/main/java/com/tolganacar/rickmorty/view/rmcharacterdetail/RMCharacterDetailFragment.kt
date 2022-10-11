@@ -1,4 +1,4 @@
-package com.tolganacar.rickmorty.view
+package com.tolganacar.rickmorty.view.rmcharacterdetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.tolganacar.rickmorty.R
-import com.tolganacar.rickmorty.viewmodel.RMCharacterDetailViewModel
+import com.tolganacar.rickmorty.viewmodel.rmcharacterdetail.RMCharacterDetailViewModel
 
 class RMCharacterDetailFragment : Fragment() {
 
