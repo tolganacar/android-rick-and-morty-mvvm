@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
+
+    <data>
+        <variable
+            name="rmCharacter"
+            type="com.tolganacar.rickmorty.model.RMCharacter" />
+        <variable
+            name="listener"
+            type="com.tolganacar.rickmorty.adapter.RMCharacterClickListener" />
+    </data>
 
 <androidx.cardview.widget.CardView
     android:id="@+id/cardView"
     android:background="@drawable/cardviewbackground"
+    android:onClick="@{listener::onRMCharacterClicked}"
     android:layout_width="match_parent"
     android:layout_height="300dp"
     app:cardUseCompatPadding="true"
@@ -21,9 +30,9 @@
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/recyclerImage"
+            android:downloadUrl="@{rmCharacter.image}"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/rick"
             android:layout_gravity="center"
             app:civ_border_color="#AA00FF"
             app:civ_border_width="2dp"
@@ -41,7 +50,7 @@
             android:id="@+id/recyclerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@{rmCharacter.name}"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="5dp"
@@ -51,7 +60,7 @@
             android:id="@+id/recyclerStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
+            android:text="@{rmCharacter.status}"
             android:padding="5dp"
             android:textSize="16sp"
             android:layout_gravity="center"/>
