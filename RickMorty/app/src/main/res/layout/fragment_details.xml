@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsFragment">
+    tools:context=".view.rmcharacterdetail.RMCharacterDetailFragment"
+    android:background="@drawable/backgroundthree">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="267dp"
+        android:layout_height="253dp"
+        android:layout_marginTop="50dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/rick" />
+
+        <TextView
+            android:id="@+id/detailsStatus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Alive"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginLeft="10dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/detailsGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male"
+        android:textColor="#304FFE"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="315dp" />
 
 
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,7 +1,8 @@
-package com.tolganacar.rickmorty
+package com.tolganacar.rickmorty.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tolganacar.rickmorty.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
