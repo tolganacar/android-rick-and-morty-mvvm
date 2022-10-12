@@ -98,7 +98,7 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
     }
 
     override fun onRMCharacterClicked(character: RMCharacter) {
-        val action = RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character.id)
+        val action = RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character)
         findNavController().navigate(action)
     }
 
