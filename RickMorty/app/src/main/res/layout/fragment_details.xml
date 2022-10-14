@@ -67,7 +67,9 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsCharacterName">
+        app:layout_constraintTop_toBottomOf="@+id/detailsCharacterName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -82,7 +84,7 @@
                 android:text="Species"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="20dp"/>
 
             <TextView
                 android:id="@+id/detailsGender"
@@ -91,7 +93,7 @@
                 android:text="Gender"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="20dp"/>
 
             <TextView
                 android:id="@+id/detailsStatus"
@@ -100,7 +102,7 @@
                 android:text="Status"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="20dp"/>
 
             <TextView
                 android:id="@+id/detailsLocation"
@@ -109,7 +111,7 @@
                 android:text="Location"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="20dp"/>
 
             <TextView
                 android:id="@+id/detailsOrigin"
@@ -118,7 +120,7 @@
                 android:text="Origin"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="20dp"/>
 
         </LinearLayout>
 
@@ -138,7 +140,7 @@
                 tools:layout_editor_absoluteX="174dp"
                 tools:layout_editor_absoluteY="385dp"
                 android:layout_gravity="end"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="20dp"/>
 
             <TextView
                 android:id="@+id/detailsCharacterGender"
@@ -150,7 +152,7 @@
                 tools:layout_editor_absoluteX="174dp"
                 tools:layout_editor_absoluteY="385dp"
                 android:layout_gravity="end"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="20dp"/>
 
             <TextView
                 android:id="@+id/detailsCharacterStatus"
@@ -162,7 +164,7 @@
                 tools:layout_editor_absoluteX="179dp"
                 tools:layout_editor_absoluteY="336dp"
                 android:layout_gravity="end"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="20dp"/>
 
             <TextView
                 android:id="@+id/detailsCharacterLocation"
@@ -174,7 +176,7 @@
                 tools:layout_editor_absoluteX="179dp"
                 tools:layout_editor_absoluteY="336dp"
                 android:layout_gravity="end"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="20dp"/>
 
             <TextView
                 android:id="@+id/detailsCharacterOrigin"
@@ -186,7 +188,7 @@
                 tools:layout_editor_absoluteX="179dp"
                 tools:layout_editor_absoluteY="336dp"
                 android:layout_gravity="end"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="20dp"/>
         </LinearLayout>
 
 
