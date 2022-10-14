@@ -10,9 +10,9 @@
 
 <androidx.cardview.widget.CardView
     android:id="@+id/cardView"
-    android:background="@drawable/cardviewbackground"
+    android:backgroundTint="#3B3E43"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="170dp"
     app:cardUseCompatPadding="true"
     app:cardElevation="4dp"
     app:cardCornerRadius="20dp"
@@ -21,26 +21,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="150dp"
+        android:orientation="horizontal">
 
-        <com.mikhaellopez.circularimageview.CircularImageView
+        <ImageView
             android:id="@+id/recyclerImage"
             android:downloadUrl="@{rmCharacter.image}"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            app:civ_border_color="#AA00FF"
-            app:civ_border_width="2dp"
-            app:civ_shadow="true"
-            app:civ_shadow_color="#3f51b5"
-            app:civ_shadow_radius="1dp"
-            android:padding="3dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:src="@drawable/rick" />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp">
 
         <TextView
             android:id="@+id/recyclerName"
@@ -50,16 +48,40 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="5dp"
-            android:layout_gravity="center"/>
+            android:textColor="#E8ECEB" />
 
-        <TextView
-            android:id="@+id/recyclerStatus"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{rmCharacter.status}"
-            android:padding="5dp"
-            android:textSize="16sp"
-            android:layout_gravity="center"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/recyclerStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{rmCharacter.status}"
+                android:textColor="#E8ECEB"
+                android:padding="5dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/brace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="#E8ECEB"/>
+
+                <TextView
+                    android:id="@+id/recyclerSpecies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{rmCharacter.species}"
+                    android:textColor="#E8ECEB"
+                    android:padding="5dp"
+                    android:textSize="16sp" />
+
+        </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
