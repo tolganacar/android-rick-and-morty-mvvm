@@ -7,6 +7,7 @@ import com.tolganacar.rickmorty.model.RMCharacter
 class RMCharacterDetailViewModel: ViewModel() {
 
     val characterLiveData = MutableLiveData<RMCharacter>()
+    var selectedCharacter : RMCharacter ?= null
 
     fun setCharacter(character: RMCharacter){
         characterLiveData.value = character

@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_details.*
 class RMCharacterDetailFragment : Fragment() {
 
     private lateinit var viewModel: RMCharacterDetailViewModel
-    private var character : RMCharacter ?= null
     private lateinit var dataBinding: FragmentDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,29 +34,20 @@ class RMCharacterDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setArguments()
-
         initializeViewModel()
 
-        observeLiveData()
-    }
-
-    private fun observeLiveData(){
-        viewModel.characterLiveData.observe(viewLifecycleOwner, Observer { character ->
-            character?.let {
-                dataBinding.selectedCharacter = character
-            }
-        })
+        setArguments()
     }
 
     private fun initializeViewModel(){
         viewModel = ViewModelProviders.of(this).get(RMCharacterDetailViewModel::class.java)
-        character?.let { viewModel.setCharacter(it) }
+        dataBinding.viewModel = viewModel
     }
 
     private fun setArguments(){
         arguments?.let {
-            character = RMCharacterDetailFragmentArgs.fromBundle(it).character
+            viewModel.selectedCharacter = RMCharacterDetailFragmentArgs.fromBundle(it).character
         }
     }
+
 }
