@@ -17,20 +17,22 @@ data class RMCharacter(
     val species: String?,
     val type: String?,
     val gender: String?,
-    val origin: @RawValue RMCharacterOrigin?,
-    val location: @RawValue RMCharacterLocation?,
+    val origin: RMCharacterOrigin?,
+    val location: RMCharacterLocation?,
     val image: String?,
     val episode: List<String>?,
     val url: String?,
     val created: String?
-) : Parcelable
+): Parcelable
 
+@Parcelize
 data class RMCharacterOrigin(
     val name: String,
     val url: String
-)
+): Parcelable
 
+@Parcelize
 data class RMCharacterLocation(
     val name: String,
     val url: String,
-)
+): Parcelable

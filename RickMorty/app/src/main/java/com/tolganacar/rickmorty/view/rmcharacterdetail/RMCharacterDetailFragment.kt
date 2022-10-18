@@ -46,7 +46,7 @@ class RMCharacterDetailFragment : Fragment() {
 
     private fun setArguments(){
         arguments?.let {
-            viewModel.selectedCharacter = RMCharacterDetailFragmentArgs.fromBundle(it).character
+            viewModel.setCharacter(RMCharacterDetailFragmentArgs.fromBundle(it).character)
         }
     }
 
