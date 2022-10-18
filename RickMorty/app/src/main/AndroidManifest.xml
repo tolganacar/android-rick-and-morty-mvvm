@@ -21,7 +21,7 @@
         <activity
             android:name=".view.splash.SplashScreenActivity"
             android:exported="true"
-            android:label="Characters"
+            android:label="Rick and Morty"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
