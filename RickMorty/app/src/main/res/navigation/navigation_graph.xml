@@ -23,8 +23,7 @@
             android:id="@+id/action_detailsFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
         <argument
-            android:name="countryUuid"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:name="character"
+            app:argType="com.tolganacar.rickmorty.model.RMCharacter" />
     </fragment>
 </navigation>

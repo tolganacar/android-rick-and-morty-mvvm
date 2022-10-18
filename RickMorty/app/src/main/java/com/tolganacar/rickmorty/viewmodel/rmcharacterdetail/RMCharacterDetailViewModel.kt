@@ -8,7 +8,7 @@ class RMCharacterDetailViewModel: ViewModel() {
 
     val characterLiveData = MutableLiveData<RMCharacter>()
 
-    fun getCharacter(){
-
+    fun setCharacter(character: RMCharacter){
+        characterLiveData.value = character
     }
 }
