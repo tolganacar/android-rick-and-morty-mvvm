@@ -29,8 +29,7 @@
             android:downloadUrl="@{rmCharacter.image}"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:src="@drawable/rick" />
+            android:layout_weight="2" />
 
         <LinearLayout
             android:layout_width="0dp"
