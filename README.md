@@ -1,2 +1,3 @@
 # android-rick-and-morty-mvvm
-![image](https://user-images.githubusercontent.com/83028055/196734144-62e26a96-5365-4410-a82a-b786705d8b3d.png)
+
+![rick](https://user-images.githubusercontent.com/83028055/196734278-6066ed06-a029-4430-8531-1cf9dcf201ea.gif)
