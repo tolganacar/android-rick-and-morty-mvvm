@@ -5,15 +5,10 @@
 - Single Activity
 - MVVM Pattern
 - Clean Code
-- Repository Pattern
 
 **View:** Renders UI and delegates user actions to ViewModel
 
 **ViewModel:** Can have simple UI logic but most of the time just gets the data from UseCase
-
-**UseCase:** Contains all business rules and they written in the manner of single responsibility principle
-
-**Repository:** Single source of data. Responsible to get data from one or more data sources
 
 ## Tech Stack
 #### Dependencies
