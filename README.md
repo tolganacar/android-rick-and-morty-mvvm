@@ -18,15 +18,15 @@
 ## Tech Stack
 #### Dependencies
 
-- **[Fragment](https://developer.android.com/jetpack/androidx/releases/fragment)** 
+- **[Fragment](https://developer.android.com/jetpack/androidx/releases/fragment):** Independent screens that are hosted within an Activity 
 - **[Navigation Component](https://developer.android.com/jetpack/androidx/releases/navigation):** Consistent navigation between views
 - **[LiveData](https://developer.android.com/topic/libraries/architecture/livedata):** Lifecycle aware observable and data holder
 - **[ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel):** Holds UI data across configuration changes
 - **[Databinding](https://developer.android.com/topic/libraries/data-binding/):** Binds UI components in layouts to data sources
 - **[Retrofit](https://github.com/square/retrofit):** Type safe HTTP client
-- **[RxJava](https://developers.google.com/maps/documentation/android-sdk/rx)**
-- **[Glide](https://github.com/bumptech/glide)**
-- **[KTX](https://developer.android.com/kotlin/ktx)**
+- **[RxJava](https://developers.google.com/maps/documentation/android-sdk/rx):** A reactive programming library for composing asynchronous
+- **[Glide](https://github.com/bumptech/glide):** Media management and image loading framework
+- **[KTX](https://developer.android.com/kotlin/ktx):** a set of Kotlin extensions
 
 ## License
 
