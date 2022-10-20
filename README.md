@@ -21,7 +21,7 @@
 - **[Retrofit](https://github.com/square/retrofit):** Type safe HTTP client
 - **[RxJava](https://developers.google.com/maps/documentation/android-sdk/rx):** A reactive programming library for composing asynchronous
 - **[Glide](https://github.com/bumptech/glide):** Media management and image loading framework
-- **[KTX](https://developer.android.com/kotlin/ktx):** a set of Kotlin extensions
+- **[KTX](https://developer.android.com/kotlin/ktx):** A set of Kotlin extensions
 
 ## License
 
