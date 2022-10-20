@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Characters</string>
+    <string name="origin">Origin</string>
+    <string name="location">Location</string>
+    <string name="status">Status</string>
+    <string name="gender">Gender</string>
+    <string name="species">Species</string>
+</resources>
