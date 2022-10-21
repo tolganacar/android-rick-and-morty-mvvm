@@ -19,7 +19,7 @@
             android:id="@+id/detailsImageCardView"
             android:layout_width="267dp"
             android:layout_height="253dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
@@ -52,7 +52,7 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="25dp"
             android:backgroundTint="#3B3E43"
             app:cardCornerRadius="20dp"
             app:cardElevation="4dp"
@@ -64,173 +64,173 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/detailSpeciesImage"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/species" />
+
+                    <TextView
+                        android:id="@+id/detailSpecies"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="4dp">
+                        android:layout_marginStart="5dp"
+                        android:text="@string/species"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
 
-                        <ImageView
-                            android:id="@+id/detailSpeciesImage"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/species" />
-
-                        <TextView
-                            android:id="@+id/detailSpecies"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/species"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp"/>
-
-                        <TextView
-                            android:id="@+id/detailCharacterSpecies"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical|end"
-                            android:text="@{viewModel.characterLiveData.species}"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/detailCharacterSpecies"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="4dp">
-
-                        <ImageView
-                            android:id="@+id/detailGenderImage"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/gender" />
-
-                        <TextView
-                            android:id="@+id/detailGender"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/gender"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            android:id="@+id/detailCharacterGender"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical|end"
-                            android:text="@{viewModel.characterLiveData.gender}"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="4dp">
-
-                        <ImageView
-                            android:id="@+id/detailStatusImage"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/status" />
-
-                        <TextView
-                            android:id="@+id/detailStatus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/status"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            android:id="@+id/detailCharacterStatus"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical|end"
-                            android:text="@{viewModel.characterLiveData.status}"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="4dp">
-
-                        <ImageView
-                            android:id="@+id/detailLocationImage"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/location" />
-
-                        <TextView
-                            android:id="@+id/detailLocation"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/location"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            android:id="@+id/detailCharacterLocation"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical|end"
-                            android:text="@{viewModel.characterLiveData.location.name}"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:paddingStart="50dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="4dp">
-
-                        <ImageView
-                            android:id="@+id/detailOriginImage"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/origin" />
-
-                        <TextView
-                            android:id="@+id/detailOrigin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/origin"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            android:id="@+id/detailCharacterOrigin"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical|end"
-                            android:text="@{viewModel.characterLiveData.origin.name}"
-                            android:textColor="#E8ECEB"
-                            android:textSize="17sp"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:paddingStart="70dp" />
-                    </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|end"
+                        android:text="@{viewModel.characterLiveData.species}"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/detailGenderImage"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/gender" />
+
+                    <TextView
+                        android:id="@+id/detailGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/gender"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/detailCharacterGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|end"
+                        android:text="@{viewModel.characterLiveData.gender}"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/detailStatusImage"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/status" />
+
+                    <TextView
+                        android:id="@+id/detailStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/status"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/detailCharacterStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|end"
+                        android:text="@{viewModel.characterLiveData.status}"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/detailLocationImage"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/location" />
+
+                    <TextView
+                        android:id="@+id/detailLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/location"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/detailCharacterLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical|end"
+                        android:maxLines="1"
+                        android:paddingStart="50dp"
+                        android:text="@{viewModel.characterLiveData.location.name}"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/detailOriginImage"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/origin" />
+
+                    <TextView
+                        android:id="@+id/detailOrigin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/origin"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/detailCharacterOrigin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical|end"
+                        android:maxLines="1"
+                        android:paddingStart="70dp"
+                        android:text="@{viewModel.characterLiveData.origin.name}"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+                </LinearLayout>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
