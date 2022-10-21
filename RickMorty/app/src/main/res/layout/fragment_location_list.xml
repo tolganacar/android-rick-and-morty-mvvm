@@ -8,10 +8,10 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewLocations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Locations"
+        android:text="@string/location"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
