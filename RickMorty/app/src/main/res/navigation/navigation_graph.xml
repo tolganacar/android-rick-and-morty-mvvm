@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.tolganacar.rickmorty.view.rmcharacterdetail.RMCharacterDetailFragment"
-        android:label="Character"
+        android:label="Location"
         tools:layout="@layout/fragment_details" >
         <action
             android:id="@+id/action_detailsFragment_to_feedFragment"
@@ -32,5 +32,21 @@
         android:id="@+id/locationListFragment"
         android:name="com.tolganacar.rickmorty.view.rmlocationlist.RMLocationListFragment"
         android:label="Locations"
-        tools:layout="@layout/fragment_location_list" />
+        tools:layout="@layout/fragment_location_list" >
+        <action
+            android:id="@+id/action_locationListFragment_to_RMLocationDetailFragment"
+            app:destination="@id/RMLocationDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/RMLocationDetailFragment"
+        android:name="com.tolganacar.rickmorty.view.rmlocationdetail.RMLocationDetailFragment"
+        android:label="Location"
+        tools:layout="@layout/fragment_location_detail" >
+        <action
+            android:id="@+id/action_RMLocationDetailFragment_to_locationListFragment"
+            app:destination="@id/locationListFragment" />
+        <argument
+            android:name="location"
+            app:argType="com.tolganacar.rickmorty.model.RMLocationResponseModel" />
+    </fragment>
 </navigation>

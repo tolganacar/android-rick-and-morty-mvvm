@@ -19,11 +19,6 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
     private lateinit var viewModel: RMCharacterListVM
     private val rickMortyAdapter = RMCharacterAdapter(arrayListOf())
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
