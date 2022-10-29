@@ -21,16 +21,16 @@ data class RMCharacter(
     val episode: List<String>?,
     val url: String?,
     val created: String?
-): Parcelable
+) : Parcelable
 
 @Parcelize
 data class RMCharacterOrigin(
     val name: String,
     val url: String
-): Parcelable
+) : Parcelable
 
 @Parcelize
 data class RMCharacterLocation(
     val name: String,
     val url: String,
-): Parcelable
+) : Parcelable

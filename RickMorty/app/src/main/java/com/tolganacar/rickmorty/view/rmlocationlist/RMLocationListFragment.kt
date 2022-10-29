@@ -11,9 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tolganacar.rickmorty.R
 import com.tolganacar.rickmorty.model.RMLocationResponseModel
-import com.tolganacar.rickmorty.view.rmcharacterlist.RMCharacterListFragmentDirections
 import com.tolganacar.rickmorty.viewmodel.rmlocationlist.RMLocationListViewModel
-import kotlinx.android.synthetic.main.fragment_feed.*
 import kotlinx.android.synthetic.main.fragment_location_list.*
 
 class RMLocationListFragment : Fragment(), RMLocationClickListener {
@@ -40,19 +38,19 @@ class RMLocationListFragment : Fragment(), RMLocationClickListener {
         setSwipeRefreshLayout()
     }
 
-    private fun initializeViewModel(){
+    private fun initializeViewModel() {
         viewModel = ViewModelProviders.of(this).get(RMLocationListViewModel::class.java)
         viewModel.getRMLocationListFromAPI()
     }
 
-    private fun initializeRecyclerView(){
-        recyclerViewLocationList.layoutManager = GridLayoutManager(context,2)
+    private fun initializeRecyclerView() {
+        recyclerViewLocationList.layoutManager = GridLayoutManager(context, 2)
         recyclerViewLocationList.adapter = rmLocationAdapter.apply {
             setOnClickListener(this@RMLocationListFragment)
         }
     }
 
-    private fun observeLiveData(){
+    private fun observeLiveData() {
         viewModel.locations.observe(viewLifecycleOwner, Observer { locations ->
             locations?.let {
                 recyclerViewLocationList.visibility = View.VISIBLE
@@ -61,9 +59,9 @@ class RMLocationListFragment : Fragment(), RMLocationClickListener {
 
             viewModel.shouldShowLocationErrorMessage.observe(viewLifecycleOwner, Observer { error ->
                 error?.let {
-                    if (it){
+                    if (it) {
                         errorTextLocationList.visibility = View.VISIBLE
-                    }else{
+                    } else {
                         errorTextLocationList.visibility = View.GONE
                     }
                 }
@@ -71,11 +69,11 @@ class RMLocationListFragment : Fragment(), RMLocationClickListener {
 
             viewModel.isLoadingLocation.observe(viewLifecycleOwner, Observer { loading ->
                 loading?.let {
-                    if(it){
+                    if (it) {
                         loadingLocationList.visibility = View.VISIBLE
                         recyclerViewLocationList.visibility = View.GONE
                         errorTextLocationList.visibility = View.GONE
-                    }else{
+                    } else {
                         loadingLocationList.visibility = View.GONE
                     }
                 }
@@ -83,7 +81,7 @@ class RMLocationListFragment : Fragment(), RMLocationClickListener {
         })
     }
 
-    private fun setSwipeRefreshLayout(){
+    private fun setSwipeRefreshLayout() {
         recyclerViewLocationList.visibility = View.GONE
         errorTextLocationList.visibility = View.GONE
         loadingLocationList.visibility = View.VISIBLE
@@ -92,7 +90,10 @@ class RMLocationListFragment : Fragment(), RMLocationClickListener {
     }
 
     override fun onRMLocationClicked(location: RMLocationResponseModel) {
-        val action = RMLocationListFragmentDirections.actionLocationListFragmentToRMLocationDetailFragment(location)
+        val action =
+            RMLocationListFragmentDirections.actionLocationListFragmentToRMLocationDetailFragment(
+                location
+            )
         findNavController().navigate(action)
     }
 

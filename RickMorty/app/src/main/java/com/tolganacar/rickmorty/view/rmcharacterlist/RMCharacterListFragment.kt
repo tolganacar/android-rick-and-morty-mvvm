@@ -39,7 +39,7 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         setSwipeRefreshLayout()
     }
 
-    private fun observeLiveData(){
+    private fun observeLiveData() {
         viewModel.characterList.observe(viewLifecycleOwner, Observer { characters ->
             characters?.let {
                 recyclerView.visibility = View.VISIBLE
@@ -49,9 +49,9 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
 
         viewModel.shouldShowErrorMessage.observe(viewLifecycleOwner, Observer { error ->
             error?.let {
-                if(it){
+                if (it) {
                     feedErrorText.visibility = View.VISIBLE
-                }else{
+                } else {
                     feedErrorText.visibility = View.GONE
                 }
             }
@@ -59,30 +59,30 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
 
         viewModel.isLoading.observe(viewLifecycleOwner, Observer { loading ->
             loading?.let {
-                if(it){
+                if (it) {
                     feedLoading.visibility = View.VISIBLE
                     recyclerView.visibility = View.GONE
                     feedErrorText.visibility = View.GONE
-                }else{
+                } else {
                     feedLoading.visibility = View.GONE
                 }
             }
         })
     }
 
-    private fun initializeViewModel(){
+    private fun initializeViewModel() {
         viewModel = ViewModelProviders.of(this).get(RMCharacterListVM::class.java)
         viewModel.getRMCharacterListFromAPI()
     }
 
-    private fun initializeRecyclerview(){
+    private fun initializeRecyclerview() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = rickMortyAdapter.apply {
             setOnClickListener(this@RMCharacterListFragment)
         }
     }
 
-    private fun setSwipeRefreshLayout(){
+    private fun setSwipeRefreshLayout() {
         swipeRefreshLayout.setOnRefreshListener {
             recyclerView.visibility = View.GONE
             feedErrorText.visibility = View.GONE
@@ -93,7 +93,8 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
     }
 
     override fun onRMCharacterClicked(character: RMCharacter) {
-        val action = RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character)
+        val action =
+            RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character)
         findNavController().navigate(action)
     }
 

@@ -6,15 +6,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tolganacar.rickmorty.databinding.RecyclerRowLocationListBinding
 import com.tolganacar.rickmorty.model.RMLocationResponseModel
 
-class RMLocationAdapter(val locationList: ArrayList<RMLocationResponseModel>): RecyclerView.Adapter<RMLocationAdapter.RMLocationViewHolder>() {
+class RMLocationAdapter(val locationList: ArrayList<RMLocationResponseModel>) :
+    RecyclerView.Adapter<RMLocationAdapter.RMLocationViewHolder>() {
 
     private var listener: RMLocationClickListener? = null
 
-    class RMLocationViewHolder(val binding: RecyclerRowLocationListBinding): RecyclerView.ViewHolder(binding.root){
+    class RMLocationViewHolder(val binding: RecyclerRowLocationListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RMLocationViewHolder {
-        val binding = RecyclerRowLocationListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = RecyclerRowLocationListBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return RMLocationViewHolder(binding)
     }
 
@@ -29,7 +35,7 @@ class RMLocationAdapter(val locationList: ArrayList<RMLocationResponseModel>): R
         return locationList.size
     }
 
-    fun updateLocationList(newLocationList: List<RMLocationResponseModel>){
+    fun updateLocationList(newLocationList: List<RMLocationResponseModel>) {
         locationList.clear()
         locationList.addAll(newLocationList)
         notifyDataSetChanged()

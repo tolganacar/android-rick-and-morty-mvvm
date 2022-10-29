@@ -16,7 +16,7 @@ class RickMortyLocationAPIService {
         .build()
         .create(RickMortyAPI::class.java)
 
-    fun getRMLocations(): Single<List<RMLocationResponseModel>>{
+    fun getRMLocations(): Single<List<RMLocationResponseModel>> {
         return api.getRMLocations()
     }
 }

@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class RMLocationListViewModel: ViewModel(){
+class RMLocationListViewModel : ViewModel() {
     val locations = MutableLiveData<List<RMLocationResponseModel>>()
     val shouldShowLocationErrorMessage = MutableLiveData<Boolean>()
     val isLoadingLocation = MutableLiveData<Boolean>()
@@ -17,14 +17,14 @@ class RMLocationListViewModel: ViewModel(){
     private val locationAPIService = RickMortyLocationAPIService()
     private val disposable = CompositeDisposable()
 
-    fun getRMLocationListFromAPI(){
+    fun getRMLocationListFromAPI() {
         isLoadingLocation.value = true
 
         disposable.add(
             locationAPIService.getRMLocations()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<List<RMLocationResponseModel>>(){
+                .subscribeWith(object : DisposableSingleObserver<List<RMLocationResponseModel>>() {
                     override fun onSuccess(response: List<RMLocationResponseModel>) {
                         locations.value = response
                         shouldShowLocationErrorMessage.value = false
@@ -37,6 +37,6 @@ class RMLocationListViewModel: ViewModel(){
                         e.printStackTrace()
                     }
                 }
-        ))
+                ))
     }
 }

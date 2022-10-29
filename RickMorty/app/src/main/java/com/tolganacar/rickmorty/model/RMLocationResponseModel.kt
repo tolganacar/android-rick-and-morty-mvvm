@@ -10,4 +10,4 @@ data class RMLocationResponseModel(
     val type: String,
     val dimension: String,
     val image: String
-): Parcelable
+) : Parcelable

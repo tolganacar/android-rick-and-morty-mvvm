@@ -10,13 +10,13 @@ class RickMortyAPIService {
     private val BASE_URL = "https://rickandmortyapi.com/api/"
 
     private val api = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build()
-                    .create(RickMortyAPI::class.java)
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+        .create(RickMortyAPI::class.java)
 
-    fun getRMCharacters(): Single<RMCharacterResponseModel>{
+    fun getRMCharacters(): Single<RMCharacterResponseModel> {
         return api.getRMCharacters()
     }
 }
