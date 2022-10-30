@@ -1,14 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.rmlocationdetail.RMLocationDetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tolganacar.rickmorty.viewmodel.rmlocationdetail.RMLocationDetailViewModel" />
+    </data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#24292E"
+        tools:context=".view.rmlocationdetail.RMLocationDetailFragment">
 
-</FrameLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/locationDetailImageCardView"
+            android:layout_width="361dp"
+            android:layout_height="276dp"
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:backgroundTint="#24292E"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/locationDetailImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:downloadUrl="@{viewModel.locationLiveData.image}"
+                android:scaleType="fitCenter" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/locationDetailLocationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@{viewModel.locationLiveData.name}"
+            android:textColor="#E8ECEB"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationDetailImageCardView" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/locationDetailCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="90dp"
+            android:backgroundTint="#3B3E43"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/locationDetailTypeImage"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/type" />
+
+                    <TextView
+                        android:id="@+id/locationDetailType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/type"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/locationDetailLocationType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|end"
+                        android:text="@{viewModel.locationLiveData.type}"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/locationDetailDimensionImage"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/dimension" />
+
+                    <TextView
+                        android:id="@+id/locationDetailDimension"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/dimension"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/locationDetailLocationDimension"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|end"
+                        android:text="@{viewModel.locationLiveData.dimension}"
+                        android:textColor="#E8ECEB"
+                        android:textSize="17sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

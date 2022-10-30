@@ -27,7 +27,7 @@
         <ImageView
             android:id="@+id/recyclerImageLocationList"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:downloadUrl="@{location.image}"/>
 
         <TextView
