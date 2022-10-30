@@ -10,7 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class RMCharacterListVM: ViewModel() {
+class RMCharacterListVM : ViewModel() {
     val characterList = MutableLiveData<List<RMCharacter>>()
     val shouldShowErrorMessage = MutableLiveData<Boolean>()
     val isLoading = MutableLiveData<Boolean>()
@@ -19,14 +19,14 @@ class RMCharacterListVM: ViewModel() {
     private val disposable = CompositeDisposable()
 
 
-    fun getRMCharacterListFromAPI(){
+    fun getRMCharacterListFromAPI() {
         isLoading.value = true
 
         disposable.add(
             rickMortyApiService.getRMCharacters()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<RMCharacterResponseModel>(){
+                .subscribeWith(object : DisposableSingleObserver<RMCharacterResponseModel>() {
                     override fun onSuccess(response: RMCharacterResponseModel) {
                         characterList.value = response.results
                         shouldShowErrorMessage.value = false
@@ -39,7 +39,7 @@ class RMCharacterListVM: ViewModel() {
                         e.printStackTrace()
                     }
                 }
-            )
+                )
         )
     }
 }

@@ -18,8 +18,10 @@
         <entry key="..\:/Users/NACAR/Desktop/rickandmorty/RickMorty/app/src/main/res/layout/activity_splash.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/NACAR/Desktop/rickandmorty/RickMorty/app/src/main/res/layout/fragment_details.xml" value="0.264" />
         <entry key="..\:/Users/NACAR/Desktop/rickandmorty/RickMorty/app/src/main/res/layout/fragment_feed.xml" value="0.16" />
+        <entry key="..\:/Users/NACAR/Desktop/rickandmorty/RickMorty/app/src/main/res/layout/fragment_location_detail.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/NACAR/Desktop/rickandmorty/RickMorty/app/src/main/res/layout/fragment_location_list.xml" value="0.2" />
         <entry key="..\:/Users/NACAR/Desktop/rickandmorty/RickMorty/app/src/main/res/layout/recycler_row.xml" value="0.264" />
+        <entry key="..\:/Users/NACAR/Desktop/rickandmorty/RickMorty/app/src/main/res/layout/recycler_row_location_list.xml" value="0.21467391304347827" />
         <entry key="..\:/Users/NACAR/Desktop/rickandmorty/RickMorty/app/src/main/res/menu/bottom_menu.xml" value="0.264" />
       </map>
     </option>

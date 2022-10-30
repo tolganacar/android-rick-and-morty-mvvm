@@ -6,15 +6,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tolganacar.rickmorty.databinding.RecyclerRowBinding
 import com.tolganacar.rickmorty.model.RMCharacter
 
-class RMCharacterAdapter(val characterList: ArrayList<RMCharacter>): RecyclerView.Adapter<RMCharacterAdapter.RMCharacterViewHolder>() {
+class RMCharacterAdapter(
+    private val characterList: ArrayList<RMCharacter>
+) : RecyclerView.Adapter<RMCharacterAdapter.RMCharacterViewHolder>() {
 
     private var listener: RMCharacterClickListener? = null
 
-    class RMCharacterViewHolder(val binding : RecyclerRowBinding): RecyclerView.ViewHolder(binding.root){
+    class RMCharacterViewHolder(val binding: RecyclerRowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RMCharacterViewHolder {
-        val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RMCharacterViewHolder(binding)
     }
 
@@ -30,7 +33,7 @@ class RMCharacterAdapter(val characterList: ArrayList<RMCharacter>): RecyclerVie
         return characterList.size
     }
 
-    fun updateCharacterList(newCharacterList: List<RMCharacter>){
+    fun updateCharacterList(newCharacterList: List<RMCharacter>) {
         characterList.clear()
         characterList.addAll(newCharacterList)
         notifyDataSetChanged()

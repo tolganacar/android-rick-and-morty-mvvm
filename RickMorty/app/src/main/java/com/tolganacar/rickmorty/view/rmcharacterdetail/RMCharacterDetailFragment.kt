@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.tolganacar.rickmorty.R
 import com.tolganacar.rickmorty.databinding.FragmentDetailsBinding
-import com.tolganacar.rickmorty.model.RMCharacter
 import com.tolganacar.rickmorty.viewmodel.rmcharacterdetail.RMCharacterDetailViewModel
-import kotlinx.android.synthetic.main.fragment_details.*
 
 class RMCharacterDetailFragment : Fragment() {
 
@@ -27,7 +24,7 @@ class RMCharacterDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_details,container,false)
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
         return dataBinding.root
     }
 
@@ -39,12 +36,12 @@ class RMCharacterDetailFragment : Fragment() {
         setArguments()
     }
 
-    private fun initializeViewModel(){
+    private fun initializeViewModel() {
         viewModel = ViewModelProviders.of(this).get(RMCharacterDetailViewModel::class.java)
         dataBinding.viewModel = viewModel
     }
 
-    private fun setArguments(){
+    private fun setArguments() {
         arguments?.let {
             viewModel.setCharacter(RMCharacterDetailFragmentArgs.fromBundle(it).character)
         }
