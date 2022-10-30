@@ -11,4 +11,6 @@
     <string name="locations">Locations</string>
     <string name="error_try_again">Error! Try Again</string>
     <string name="name">Name</string>
+    <string name="type">Type</string>
+    <string name="dimension">Dimension</string>
 </resources>
