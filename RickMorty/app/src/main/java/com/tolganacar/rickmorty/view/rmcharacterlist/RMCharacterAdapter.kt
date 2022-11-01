@@ -42,4 +42,11 @@ class RMCharacterAdapter(
     fun setOnClickListener(listener: RMCharacterClickListener) {
         this.listener = listener
     }
+
+    fun addData(listItems: ArrayList<RMCharacter>) {
+        var size = this.characterList.size
+        this.characterList.addAll(listItems)
+        var sizeNew = this.characterList.size
+        notifyItemRangeChanged(size, sizeNew)
+    }
 }

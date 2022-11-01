@@ -35,7 +35,9 @@
         tools:layout="@layout/fragment_location_list" >
         <action
             android:id="@+id/action_locationListFragment_to_RMLocationDetailFragment"
-            app:destination="@id/RMLocationDetailFragment" />
+            app:destination="@id/RMLocationDetailFragment"
+            app:enterAnim="@anim/anim_slide_in_left"
+            app:exitAnim="@anim/anim_slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/RMLocationDetailFragment"

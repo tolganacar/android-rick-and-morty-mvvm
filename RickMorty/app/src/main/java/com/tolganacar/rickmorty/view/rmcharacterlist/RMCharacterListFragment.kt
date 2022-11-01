@@ -23,7 +23,6 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
@@ -37,6 +36,8 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         observeLiveData()
 
         setSwipeRefreshLayout()
+
+        setListeners()
     }
 
     private fun observeLiveData() {
@@ -97,5 +98,28 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
             RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character)
         findNavController().navigate(action)
     }
+
+    private fun setListeners() {
+        recyclerView.addOnScrollListener(
+            object : RMCharacterListOnScrollListener() {
+                override fun isLoading(): Boolean {
+                    return viewModel.isLoading.value == true
+                }
+
+                override fun loadMoreItems() {
+                    getMoreItems()
+                }
+            }
+        )
+    }
+
+    private fun getMoreItems() {
+        viewModel.characterList.observe(viewLifecycleOwner, Observer { characters ->
+            characters?.let {
+                rickMortyAdapter.addData(characters as ArrayList<RMCharacter>)
+            }
+        })
+    }
+
 
 }
