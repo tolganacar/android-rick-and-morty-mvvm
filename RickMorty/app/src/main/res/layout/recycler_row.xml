@@ -52,7 +52,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:id="@+id/imageViewIsAlive"
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
 
             <TextView
                 android:id="@+id/recyclerStatus"
@@ -60,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:text="@{rmCharacter.status}"
                 android:textColor="#E8ECEB"
-                android:padding="5dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="4dp"
                 android:textSize="16sp" />
 
             <TextView
@@ -70,14 +77,14 @@
                 android:text="-"
                 android:textColor="#E8ECEB"/>
 
-                <TextView
-                    android:id="@+id/recyclerSpecies"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{rmCharacter.species}"
-                    android:textColor="#E8ECEB"
-                    android:padding="5dp"
-                    android:textSize="16sp" />
+            <TextView
+                android:id="@+id/recyclerSpecies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{rmCharacter.species}"
+                android:textColor="#E8ECEB"
+                android:layout_marginLeft="4dp"
+                android:textSize="16sp" />
 
         </LinearLayout>
         </LinearLayout>
