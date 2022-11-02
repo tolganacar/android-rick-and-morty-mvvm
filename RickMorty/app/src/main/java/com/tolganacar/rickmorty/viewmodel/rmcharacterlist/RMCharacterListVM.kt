@@ -1,5 +1,6 @@
 package com.tolganacar.rickmorty.viewmodel.rmcharacterlist
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tolganacar.rickmorty.model.RMCharacter
@@ -17,6 +18,9 @@ class RMCharacterListVM : ViewModel() {
 
     private val rickMortyApiService = RickMortyAPIService()
     private val disposable = CompositeDisposable()
+
+    private val _filteredCharacterList = MutableLiveData<List<RMCharacter>>()
+    val filteredCharacterList: LiveData<List<RMCharacter>> get() = _filteredCharacterList
 
 
     fun getRMCharacterListFromAPI() {
@@ -42,4 +46,21 @@ class RMCharacterListVM : ViewModel() {
                 )
         )
     }
+
+    fun filterCharacterList(searchText: String) {
+        if (searchText.isEmpty()) {
+            resetCryptoCoinList()
+        } else {
+            _filteredCharacterList.value = characterList.value?.filter {
+                (it.name.contains(searchText, ignoreCase = true)
+                        || it.gender.contains(searchText, ignoreCase = true)
+                        || it.status.contains(searchText, ignoreCase = true))
+            }
+        }
+    }
+
+    private fun resetCryptoCoinList() {
+        _filteredCharacterList.value = characterList.value
+    }
+
 }

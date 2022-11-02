@@ -23,7 +23,6 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
@@ -37,6 +36,10 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         observeLiveData()
 
         setSwipeRefreshLayout()
+
+        setReceivers()
+
+        searchCharacter()
     }
 
     private fun observeLiveData() {
@@ -96,6 +99,27 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         val action =
             RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character)
         findNavController().navigate(action)
+    }
+
+    private fun setReceivers() {
+        viewModel.filteredCharacterList.observe(viewLifecycleOwner, Observer {
+            rickMortyAdapter.updateCharacterList(it)
+        })
+    }
+
+    private fun searchCharacter() {
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { viewModel.filterCharacterList(it) }
+                return true
+            }
+
+        })
     }
 
 }
