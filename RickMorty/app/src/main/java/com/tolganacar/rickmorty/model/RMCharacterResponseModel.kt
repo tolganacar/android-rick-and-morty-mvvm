@@ -1,15 +1,22 @@
 package com.tolganacar.rickmorty.model
 
 import android.os.Parcelable
+import com.tolganacar.rickmorty.base.ListAdapterItem
 import kotlinx.android.parcel.Parcelize
 
 data class RMCharacterResponseModel(
+    val info: RMInfo,
     val results: List<RMCharacter>
 )
 
 @Parcelize
+data class RMInfo(
+    val next: String
+) : Parcelable
+
+@Parcelize
 data class RMCharacter(
-    val id: Int,
+    override val id: Int,
     val name: String?,
     val status: String?,
     val species: String?,
@@ -21,7 +28,7 @@ data class RMCharacter(
     val episode: List<String>?,
     val url: String?,
     val created: String?
-) : Parcelable
+) : Parcelable, ListAdapterItem
 
 @Parcelize
 data class RMCharacterOrigin(

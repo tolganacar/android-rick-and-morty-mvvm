@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_feed.*
 class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
 
     private lateinit var viewModel: RMCharacterListVM
-    private val rickMortyAdapter = RMCharacterAdapter(arrayListOf())
+    private val rickMortyAdapter = RMCharacterAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +44,7 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         viewModel.characterList.observe(viewLifecycleOwner, Observer { characters ->
             characters?.let {
                 recyclerView.visibility = View.VISIBLE
-                rickMortyAdapter.updateCharacterList(characters)
+                rickMortyAdapter.submitList(it)
             }
         })
 
@@ -107,19 +107,10 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
                 }
 
                 override fun loadMoreItems() {
-                    getMoreItems()
+                    viewModel.getNextPageCharacterListItems()
                 }
             }
         )
     }
-
-    private fun getMoreItems() {
-        viewModel.characterList.observe(viewLifecycleOwner, Observer { characters ->
-            characters?.let {
-                rickMortyAdapter.addData(characters as ArrayList<RMCharacter>)
-            }
-        })
-    }
-
 
 }

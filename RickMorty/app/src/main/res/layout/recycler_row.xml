@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="rmCharacter"
+            name="item"
             type="com.tolganacar.rickmorty.model.RMCharacter" />
     </data>
 
@@ -26,7 +26,7 @@
 
         <ImageView
             android:id="@+id/recyclerImage"
-            android:downloadUrl="@{rmCharacter.image}"
+            android:downloadUrl="@{item.image}"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2" />
@@ -43,7 +43,7 @@
             android:id="@+id/recyclerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{rmCharacter.name}"
+            android:text="@{item.name}"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="5dp"
@@ -58,7 +58,7 @@
                 android:id="@+id/recyclerStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{rmCharacter.status}"
+                android:text="@{item.status}"
                 android:textColor="#E8ECEB"
                 android:padding="5dp"
                 android:textSize="16sp" />
@@ -74,7 +74,7 @@
                     android:id="@+id/recyclerSpecies"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{rmCharacter.species}"
+                    android:text="@{item.species}"
                     android:textColor="#E8ECEB"
                     android:padding="5dp"
                     android:textSize="16sp" />

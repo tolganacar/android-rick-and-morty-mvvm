@@ -11,13 +11,16 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 class RMCharacterListVM : ViewModel() {
+
     val characterList = MutableLiveData<List<RMCharacter>>()
-    val shouldShowErrorMessage = MutableLiveData<Boolean>()
+
     val isLoading = MutableLiveData<Boolean>()
+    val shouldShowErrorMessage = MutableLiveData<Boolean>()
+
+    val nextPage = MutableLiveData<String>()
 
     private val rickMortyApiService = RickMortyAPIService()
     private val disposable = CompositeDisposable()
-
 
     fun getRMCharacterListFromAPI() {
         isLoading.value = true
@@ -28,7 +31,11 @@ class RMCharacterListVM : ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<RMCharacterResponseModel>() {
                     override fun onSuccess(response: RMCharacterResponseModel) {
-                        characterList.value = response.results
+                        val arrayList = (characterList.value as? ArrayList).apply {
+                            this?.addAll(response.results)
+                        }
+                        characterList.value = arrayList?.toList()
+                        nextPage.value = response.info.next.takeLast(1)
                         shouldShowErrorMessage.value = false
                         isLoading.value = false
                     }
@@ -42,4 +49,34 @@ class RMCharacterListVM : ViewModel() {
                 )
         )
     }
+
+    fun getNextPageCharacterListItems() {
+        isLoading.value = true
+        nextPage.value?.let { page ->
+            disposable.add(
+                rickMortyApiService.getNextRMCharacter(page)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(object : DisposableSingleObserver<RMCharacterResponseModel>() {
+                        override fun onSuccess(response: RMCharacterResponseModel) {
+                            val arrayList = (characterList.value as? ArrayList).apply {
+                                this?.addAll(response.results)
+                            }
+                            characterList.value = arrayList?.toList()
+                            nextPage.value = response.info.next.takeLast(1)
+                            shouldShowErrorMessage.value = false
+                            isLoading.value = false
+                        }
+
+                        override fun onError(e: Throwable) {
+                            isLoading.value = false
+                            shouldShowErrorMessage.value = true
+                            e.printStackTrace()
+                        }
+                    }
+                    )
+            )
+        }
+    }
+
 }

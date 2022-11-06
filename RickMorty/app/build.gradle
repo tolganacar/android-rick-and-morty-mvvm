@@ -85,4 +85,6 @@ dependencies {
     implementation "androidx.preference:preference:$preferencesVersion"
 
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
 }
