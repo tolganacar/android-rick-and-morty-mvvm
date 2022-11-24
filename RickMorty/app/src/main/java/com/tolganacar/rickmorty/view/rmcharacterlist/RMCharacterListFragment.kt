@@ -23,7 +23,6 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
@@ -37,6 +36,20 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         observeLiveData()
 
         setSwipeRefreshLayout()
+
+        setSearchListener()
+    }
+
+    private fun initializeViewModel() {
+        viewModel = ViewModelProviders.of(this).get(RMCharacterListVM::class.java)
+        viewModel.getRMCharacterListFromAPI()
+    }
+
+    private fun initializeRecyclerview() {
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = rickMortyAdapter.apply {
+            setOnClickListener(this@RMCharacterListFragment)
+        }
     }
 
     private fun observeLiveData() {
@@ -68,18 +81,10 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
                 }
             }
         })
-    }
 
-    private fun initializeViewModel() {
-        viewModel = ViewModelProviders.of(this).get(RMCharacterListVM::class.java)
-        viewModel.getRMCharacterListFromAPI()
-    }
-
-    private fun initializeRecyclerview() {
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = rickMortyAdapter.apply {
-            setOnClickListener(this@RMCharacterListFragment)
-        }
+        viewModel.filteredCharacterList.observe(viewLifecycleOwner, Observer {
+            rickMortyAdapter.updateCharacterList(it)
+        })
     }
 
     private fun setSwipeRefreshLayout() {
@@ -96,6 +101,21 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         val action =
             RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character)
         findNavController().navigate(action)
+    }
+
+    private fun setSearchListener() {
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { viewModel.filterCharacterList(it) }
+                return true
+            }
+
+        })
     }
 
 }

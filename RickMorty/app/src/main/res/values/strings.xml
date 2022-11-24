@@ -13,4 +13,5 @@
     <string name="name">Name</string>
     <string name="type">Type</string>
     <string name="dimension">Dimension</string>
+    <string name="characters">Characters</string>
 </resources>
