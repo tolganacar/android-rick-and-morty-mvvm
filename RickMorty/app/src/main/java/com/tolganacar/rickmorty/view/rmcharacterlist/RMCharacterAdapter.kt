@@ -30,12 +30,16 @@ class RMCharacterAdapter(
             listener?.onRMCharacterClicked(characterList.get(position))
         }
 
-        if(characterList[position].status == "Alive") {
-            holder.binding.imageViewIsAlive.setImageResource(R.drawable.green)
-        } else if (characterList[position].status == "Dead"){
-            holder.binding.imageViewIsAlive.setImageResource(R.drawable.red)
-        } else {
-            holder.binding.imageViewIsAlive.setImageResource(R.drawable.grey)
+        when (characterList[position].status) {
+            "Alive" -> {
+                holder.binding.imageViewIsAlive.setImageResource(R.drawable.green)
+            }
+            "Dead" -> {
+                holder.binding.imageViewIsAlive.setImageResource(R.drawable.red)
+            }
+            else -> {
+                holder.binding.imageViewIsAlive.setImageResource(R.drawable.grey)
+            }
         }
     }
 
