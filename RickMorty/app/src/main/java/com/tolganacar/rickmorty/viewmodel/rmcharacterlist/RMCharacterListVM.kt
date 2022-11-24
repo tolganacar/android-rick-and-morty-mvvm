@@ -49,7 +49,7 @@ class RMCharacterListVM : ViewModel() {
 
     fun filterCharacterList(searchText: String) {
         if (searchText.isEmpty()) {
-            resetCryptoCoinList()
+            resetCharacterList()
         } else {
             _filteredCharacterList.value = characterList.value?.filter {
                 (it.name.contains(searchText, ignoreCase = true)
@@ -59,7 +59,7 @@ class RMCharacterListVM : ViewModel() {
         }
     }
 
-    private fun resetCryptoCoinList() {
+    private fun resetCharacterList() {
         _filteredCharacterList.value = characterList.value
     }
 

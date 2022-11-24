@@ -37,9 +37,19 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
 
         setSwipeRefreshLayout()
 
-        setReceivers()
+        setSearchListener()
+    }
 
-        searchCharacter()
+    private fun initializeViewModel() {
+        viewModel = ViewModelProviders.of(this).get(RMCharacterListVM::class.java)
+        viewModel.getRMCharacterListFromAPI()
+    }
+
+    private fun initializeRecyclerview() {
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = rickMortyAdapter.apply {
+            setOnClickListener(this@RMCharacterListFragment)
+        }
     }
 
     private fun observeLiveData() {
@@ -71,18 +81,10 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
                 }
             }
         })
-    }
 
-    private fun initializeViewModel() {
-        viewModel = ViewModelProviders.of(this).get(RMCharacterListVM::class.java)
-        viewModel.getRMCharacterListFromAPI()
-    }
-
-    private fun initializeRecyclerview() {
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = rickMortyAdapter.apply {
-            setOnClickListener(this@RMCharacterListFragment)
-        }
+        viewModel.filteredCharacterList.observe(viewLifecycleOwner, Observer {
+            rickMortyAdapter.updateCharacterList(it)
+        })
     }
 
     private fun setSwipeRefreshLayout() {
@@ -101,13 +103,7 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         findNavController().navigate(action)
     }
 
-    private fun setReceivers() {
-        viewModel.filteredCharacterList.observe(viewLifecycleOwner, Observer {
-            rickMortyAdapter.updateCharacterList(it)
-        })
-    }
-
-    private fun searchCharacter() {
+    private fun setSearchListener() {
         searchView.clearFocus()
         searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
