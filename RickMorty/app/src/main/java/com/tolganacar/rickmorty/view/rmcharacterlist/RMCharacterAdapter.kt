@@ -3,6 +3,7 @@ package com.tolganacar.rickmorty.view.rmcharacterlist
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tolganacar.rickmorty.R
 import com.tolganacar.rickmorty.databinding.RecyclerRowBinding
 import com.tolganacar.rickmorty.model.RMCharacter
 
@@ -24,8 +25,21 @@ class RMCharacterAdapter(
     override fun onBindViewHolder(holder: RMCharacterViewHolder, position: Int) {
 
         holder.binding.rmCharacter = characterList.get(position)
+
         holder.binding.cardView.setOnClickListener {
             listener?.onRMCharacterClicked(characterList.get(position))
+        }
+
+        when (characterList[position].status) {
+            "Alive" -> {
+                holder.binding.imageViewIsAlive.setImageResource(R.drawable.green)
+            }
+            "Dead" -> {
+                holder.binding.imageViewIsAlive.setImageResource(R.drawable.red)
+            }
+            else -> {
+                holder.binding.imageViewIsAlive.setImageResource(R.drawable.grey)
+            }
         }
     }
 
