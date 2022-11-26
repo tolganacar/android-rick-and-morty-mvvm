@@ -117,5 +117,4 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
 
         })
     }
-
 }

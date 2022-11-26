@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tolganacar.rickmorty.R
-import com.tolganacar.rickmorty.databinding.RecyclerRowBinding
+import com.tolganacar.rickmorty.databinding.RecyclerRowCharacterListBinding
 import com.tolganacar.rickmorty.model.RMCharacter
 
 class RMCharacterAdapter(
@@ -13,12 +13,12 @@ class RMCharacterAdapter(
 
     private var listener: RMCharacterClickListener? = null
 
-    class RMCharacterViewHolder(val binding: RecyclerRowBinding) :
+    class RMCharacterViewHolder(val binding: RecyclerRowCharacterListBinding) :
         RecyclerView.ViewHolder(binding.root) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RMCharacterViewHolder {
-        val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = RecyclerRowCharacterListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RMCharacterViewHolder(binding)
     }
 

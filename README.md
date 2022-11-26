@@ -1,5 +1,6 @@
 # App Presetation
-![app_gif](https://user-images.githubusercontent.com/83028055/196927182-b2765af0-cce8-436e-9d30-5fecec489079.gif)
+![rickmortygif](https://user-images.githubusercontent.com/83028055/204087047-686067c3-abc6-4a1f-90e6-6f020ce9ac7b.gif)
+
 
 ## Architecture
 - Single Activity
