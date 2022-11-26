@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="location"
+            type="com.tolganacar.rickmorty.model.RMLocationResponseModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewLocationList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#3B3E43"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/recyclerImageLocationList"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:downloadUrl="@{location.image}" />
+
+            <TextView
+                android:id="@+id/recyclerNameLocationList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@{location.name}"
+                android:textColor="#E8ECEB"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

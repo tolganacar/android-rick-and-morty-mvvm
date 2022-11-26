@@ -1,4 +1,4 @@
-package com.tolganacar.rickmorty.view.rmcharacterdetail
+package com.tolganacar.rickmorty.view.rmlocationdetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,23 +8,20 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.tolganacar.rickmorty.R
-import com.tolganacar.rickmorty.databinding.FragmentDetailsBinding
-import com.tolganacar.rickmorty.viewmodel.rmcharacterdetail.RMCharacterDetailViewModel
+import com.tolganacar.rickmorty.databinding.FragmentLocationDetailBinding
+import com.tolganacar.rickmorty.viewmodel.rmlocationdetail.RMLocationDetailViewModel
 
-class RMCharacterDetailFragment : Fragment() {
+class RMLocationDetailFragment : Fragment() {
 
-    private lateinit var viewModel: RMCharacterDetailViewModel
-    private lateinit var dataBinding: FragmentDetailsBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var viewModel: RMLocationDetailViewModel
+    private lateinit var dataBinding: FragmentLocationDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
+        dataBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_location_detail, container, false)
         return dataBinding.root
     }
 
@@ -37,14 +34,15 @@ class RMCharacterDetailFragment : Fragment() {
     }
 
     private fun initializeViewModel() {
-        viewModel = ViewModelProviders.of(this).get(RMCharacterDetailViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(RMLocationDetailViewModel::class.java)
         dataBinding.viewModel = viewModel
     }
 
     private fun setArguments() {
         arguments?.let {
-            viewModel.setCharacter(RMCharacterDetailFragmentArgs.fromBundle(it).character)
+            viewModel.setLocation(RMLocationDetailFragmentArgs.fromBundle(it).location)
         }
     }
+
 
 }

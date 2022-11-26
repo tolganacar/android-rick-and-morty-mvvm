@@ -19,16 +19,10 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
     private lateinit var viewModel: RMCharacterListVM
     private val rickMortyAdapter = RMCharacterAdapter(arrayListOf())
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
@@ -42,9 +36,23 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
         observeLiveData()
 
         setSwipeRefreshLayout()
+
+        setSearchListener()
     }
 
-    private fun observeLiveData(){
+    private fun initializeViewModel() {
+        viewModel = ViewModelProviders.of(this).get(RMCharacterListVM::class.java)
+        viewModel.getRMCharacterListFromAPI()
+    }
+
+    private fun initializeRecyclerview() {
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = rickMortyAdapter.apply {
+            setOnClickListener(this@RMCharacterListFragment)
+        }
+    }
+
+    private fun observeLiveData() {
         viewModel.characterList.observe(viewLifecycleOwner, Observer { characters ->
             characters?.let {
                 recyclerView.visibility = View.VISIBLE
@@ -54,9 +62,9 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
 
         viewModel.shouldShowErrorMessage.observe(viewLifecycleOwner, Observer { error ->
             error?.let {
-                if(it){
+                if (it) {
                     feedErrorText.visibility = View.VISIBLE
-                }else{
+                } else {
                     feedErrorText.visibility = View.GONE
                 }
             }
@@ -64,30 +72,22 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
 
         viewModel.isLoading.observe(viewLifecycleOwner, Observer { loading ->
             loading?.let {
-                if(it){
+                if (it) {
                     feedLoading.visibility = View.VISIBLE
                     recyclerView.visibility = View.GONE
                     feedErrorText.visibility = View.GONE
-                }else{
+                } else {
                     feedLoading.visibility = View.GONE
                 }
             }
         })
+
+        viewModel.filteredCharacterList.observe(viewLifecycleOwner, Observer {
+            rickMortyAdapter.updateCharacterList(it)
+        })
     }
 
-    private fun initializeViewModel(){
-        viewModel = ViewModelProviders.of(this).get(RMCharacterListVM::class.java)
-        viewModel.getRMCharacterListFromAPI()
-    }
-
-    private fun initializeRecyclerview(){
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = rickMortyAdapter.apply {
-            setOnClickListener(this@RMCharacterListFragment)
-        }
-    }
-
-    private fun setSwipeRefreshLayout(){
+    private fun setSwipeRefreshLayout() {
         swipeRefreshLayout.setOnRefreshListener {
             recyclerView.visibility = View.GONE
             feedErrorText.visibility = View.GONE
@@ -98,8 +98,23 @@ class RMCharacterListFragment : Fragment(), RMCharacterClickListener {
     }
 
     override fun onRMCharacterClicked(character: RMCharacter) {
-        val action = RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character)
+        val action =
+            RMCharacterListFragmentDirections.actionFeedFragmentToDetailsFragment(character)
         findNavController().navigate(action)
     }
 
+    private fun setSearchListener() {
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { viewModel.filterCharacterList(it) }
+                return true
+            }
+
+        })
+    }
 }
