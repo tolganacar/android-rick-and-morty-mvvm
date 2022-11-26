@@ -39,7 +39,7 @@ class RMLocationListFragment : Fragment(), RMLocationClickListener {
     }
 
     private fun initializeViewModel() {
-        viewModel = ViewModelProviders.of(this).get(RMLocationListViewModel::class.java)
+        viewModel = ViewModelProviders.of(this)[RMLocationListViewModel::class.java]
         viewModel.getRMLocationListFromAPI()
     }
 
@@ -82,11 +82,11 @@ class RMLocationListFragment : Fragment(), RMLocationClickListener {
     }
 
     private fun setSwipeRefreshLayout() {
-        recyclerViewLocationList.visibility = View.GONE
-        errorTextLocationList.visibility = View.GONE
-        loadingLocationList.visibility = View.VISIBLE
-        viewModel.getRMLocationListFromAPI()
-        swipeRefreshLayoutLocationList.isRefreshing = false
+            recyclerViewLocationList.visibility = View.GONE
+            errorTextLocationList.visibility = View.GONE
+            loadingLocationList.visibility = View.VISIBLE
+            viewModel.getRMLocationListFromAPI()
+            swipeRefreshLayoutLocationList.isRefreshing = false
     }
 
     override fun onRMLocationClicked(location: RMLocationResponseModel) {
@@ -96,6 +96,4 @@ class RMLocationListFragment : Fragment(), RMLocationClickListener {
             )
         findNavController().navigate(action)
     }
-
-
 }
