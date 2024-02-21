@@ -1,4 +1,4 @@
-# App Presetation
+# App Presentation
 ![rickmortygif](https://user-images.githubusercontent.com/83028055/204087047-686067c3-abc6-4a1f-90e6-6f020ce9ac7b.gif)
 
 
